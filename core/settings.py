@@ -13,7 +13,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # GDAL Library Path (for GeoDjango on Windows)
 # Make sure this path matches your QGIS installation
-GDAL_LIBRARY_PATH = r"C:\Program Files\QGIS 3.30.2\bin\gdal306.dll"
+import platform
+if platform.system() == "Windows":
+    GDAL_LIBRARY_PATH = r"C:\Program Files\QGIS 3.30.2\bin\gdal306.dll"
+    GEOS_LIBRARY_PATH = r"C:\Program Files\QGIS 3.30.2\bin\geos_c.dll"
+# On Linux (Render/Docker), GDAL is found automatically once installed via apt — no path needed
 
 # ==================== SECURITY WARNINGS ====================
 # KEEP SECRET KEY SAFE! For local development only.
