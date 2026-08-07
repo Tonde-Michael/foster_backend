@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+staticfiles/
+db.sqlite3
+.env
+*.md
+parcel_backup.json
+diagnose.py
