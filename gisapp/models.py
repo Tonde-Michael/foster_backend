@@ -20,8 +20,9 @@ class Parcel(models.Model):
     email = models.CharField(max_length=254, blank=True, null=True)
     
     class Meta:
-        managed = False
+        managed = True
         db_table = 'parcels'
+
     
     def __str__(self):
         return self.upn or f'Parcel {self.id}'
