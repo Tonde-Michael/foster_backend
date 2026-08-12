@@ -20,3 +20,17 @@ class Parcel(models.Model):
 
     def __str__(self):
         return self.upn or f'Parcel {self.id}'
+
+
+class Payment(models.Model):
+    id = models.AutoField(primary_key=True)
+    parcel = models.ForeignKey(Parcel, on_delete=models.CASCADE, related_name='payments', null=True, blank=True)
+    amount = models.DecimalField(max_digits=12, decimal_places=2)
+    payment_date = models.DateField()
+    reference = models.CharField(max_length=100, blank=True, null=True)
+
+    class Meta:
+        db_table = 'payments'
+
+    def __str__(self):
+        return f'Payment {self.id} - {self.amount}'

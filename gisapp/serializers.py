@@ -1,7 +1,9 @@
 # In gisapp/serializers.py
 from rest_framework import serializers
-from .models import Parcel
+
 from django.contrib.gis.geos import GEOSGeometry, MultiPolygon, Polygon
+
+from .models import Parcel, Payment
 
 class ParcelSerializer(serializers.ModelSerializer):
     # Map to frontend expected names (they already match)
@@ -74,3 +76,10 @@ class ParcelSerializer(serializers.ModelSerializer):
         
         instance.save()
         return instance
+
+
+class PaymentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
+        fields = ['id', 'parcel', 'amount', 'payment_date', 'reference']
+    
